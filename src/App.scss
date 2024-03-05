@@ -1,0 +1,34 @@
+.App {
+  padding: 0px 0px 100px 0px !important;
+}
+.Polaris-TextField__Spinner {
+  display: none !important;
+}
+.Polaris-DataTable__Navigation {
+  display: none !important;
+}
+.Polaris-Grid {
+  padding: 20px 50px 40px 50px !important;
+}
+.Polaris-Box {
+  border-bottom: 2px solid rgb(236, 236, 236) !important;
+}
+.container__card:not(:last-child) {
+  border-bottom: 2px solid rgb(236, 236, 236) !important;
+}
+svg {
+  cursor: pointer !important;
+}
+.Polaris-Frame-Toast {
+  background: rgb(0, 162, 43) !important;
+}
+.delete {
+  padding: 0px 50px;
+  display: flex;
+  justify-content: flex-end;
+  span {
+    margin: 0px !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
