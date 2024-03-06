@@ -13,7 +13,6 @@ import {
   Toast,
   Frame,
 } from "@shopify/polaris";
-import "./style.scss";
 import { PlusIcon } from "@shopify/polaris-icons";
 import BoardIndex from "../component/Board-index";
 import CardRule from "../component/Card-rule";
@@ -37,7 +36,7 @@ const FormReact = () => {
       label: "",
       quantity: 1,
       discount: "none",
-      amuont: '',
+      amuont: "",
     },
     {
       id: 2,
@@ -67,7 +66,6 @@ const FormReact = () => {
   };
 
   const hanleChangeInputOption = useCallback((id, value, title) => {
-   
     if (title === "quantity" || title === "amuont") {
       setIntOptionForm((prevOptions) =>
         prevOptions.map((option) =>
@@ -93,7 +91,7 @@ const FormReact = () => {
         description: "",
         quantity: 0, // Sử dụng giá trị mặc định hoặc giá trị mong muốn
         discount: "none",
-        Amuont: '',
+        Amuont: "",
       },
     ]);
   };
@@ -135,7 +133,7 @@ const FormReact = () => {
             <Form onSubmit={handleSubmit}>
               <BlockStack gap="100">
                 <Card roundedAbove="sm">
-                  <Text variant="headingLg" as="h6">
+                  <Text id="title__option" variant="headingLg" as="h6">
                     General
                   </Text>
                   <FormLayout>
