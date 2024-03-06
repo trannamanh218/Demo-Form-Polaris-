@@ -14,8 +14,8 @@ import {
   Frame,
 } from "@shopify/polaris";
 import { PlusIcon } from "@shopify/polaris-icons";
-import BoardIndex from "../component/Board-index";
-import CardRule from "../component/Card-rule";
+import BoardIndex from "../components/Board-index";
+import CardRule from "../components/Card-rule";
 import { useCallback, useEffect, useState } from "react";
 
 const FormReact = () => {
