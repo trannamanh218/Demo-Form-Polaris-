@@ -127,10 +127,10 @@ const FormReact = () => {
       intCamPaign.descriptionCamPaign == "" ||
       !isValid
     ) {
-      const data = { ...intCamPaign, option: intOptionForm };
-      console.log("Data post", data);
       setCheckToast("false");
     } else {
+      const data = { ...intCamPaign, option: intOptionForm };
+      console.log("Data post", data);
       setCheckToast("true");
     }
     toggleActive();
@@ -146,8 +146,6 @@ const FormReact = () => {
       onDismiss={toggleActive}
     />
   ) : null;
-
-  console.log("intOptionForm", checkToast);
 
   return (
     <div className="container__form">
