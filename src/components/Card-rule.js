@@ -2,6 +2,7 @@ import { Grid, Icon, Select, TextField } from "@shopify/polaris";
 import { DeleteIcon } from "@shopify/polaris-icons";
 import { useState, useCallback, useEffect } from "react";
 const CardRule = ({
+  checkValidate,
   checkDelete,
   setCheckDelete,
   setIntOptionForm,
@@ -62,27 +63,32 @@ const CardRule = ({
       <Grid padding="300">
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <TextField
+           id="textField"
             value={itemOption.title}
             placeholder="Enter .... "
-         
             label="Title"
             onChange={(e) => hanleChangeInputOption(indexItem, e, "title")}
             autoComplete="email"
             noValidate={false}
+            error={!itemOption.title && checkValidate ? "Vui lòng nhập đủ" : ""}
           />
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <TextField
+           id="textField"
             value={itemOption.subtitle}
             placeholder="Enter .... "
-          
             label="Subtitle"
             onChange={(e) => hanleChangeInputOption(indexItem, e, "subtitle")}
-            autoComplete="email"
+            autoComplete="off"
+            error={
+              !itemOption.subtitle && checkValidate ? "Vui lòng nhập đủ" : ""
+            }
           />
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <TextField
+           id="textField"
             value={itemOption.label}
             placeholder="Enter .... "
             label="labe ( optinal)"
@@ -92,7 +98,8 @@ const CardRule = ({
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <TextField
-            value={ itemOption.quantity ? Number(itemOption.quantity): ''}
+           id="textField"
+            value={itemOption.quantity ? Number(itemOption.quantity) : ""}
             placeholder="Enter .... "
             type="number"
             label="Quantity"
@@ -101,22 +108,26 @@ const CardRule = ({
             min={1}
             step={1}
             prefix={<span className="no-spinner" />}
+            error={
+              !itemOption.quantity && checkValidate ? "Vui lòng nhập đủ" : ""
+            }
           />
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <Select
+           id="textField"
             label="Discount type"
             options={options}
             onChange={(e) => handleSelectChange(e, indexItem)}
             value={selected}
+            requiredIndicator={true}
           />
         </Grid.Cell>
         {selected !== "none" && (
-          <Grid.Cell
-            columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}
-          >
+          <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
             <TextField
-              value={itemOption.amuont ? Number(itemOption.amuont) : ''}
+             id="textField"
+              value={itemOption.amuont ? Number(itemOption.amuont) : ""}
               placeholder="Enter .... "
               type="number"
               label="Amuont"
@@ -128,6 +139,9 @@ const CardRule = ({
                   : itemOption.discount == "discount"
                   ? "%"
                   : ""
+              }
+              error={
+                !itemOption.amuont && checkValidate ? "Vui lòng nhập đủ" : ""
               }
             />
           </Grid.Cell>

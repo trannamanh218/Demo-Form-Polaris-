@@ -19,8 +19,15 @@
 svg {
   cursor: pointer !important;
 }
+
 .Polaris-Frame-Toast {
-  background: rgb(0, 162, 43) !important;
+  background: rgrgb(80, 68, 222)important;
+}
+
+.toast__false {
+  .Polaris-Frame-Toast {
+    background: rgb(255, 204, 2) !important;
+  }
 }
 .delete {
   padding: 0px 50px;
@@ -41,4 +48,14 @@ svg {
 }
 #title__option {
   margin-bottom: 20px;
+}
+#textField {
+  margin: 4px;
+  border-radius: 3px !important;
+}
+.Polaris-Select__Content {
+  padding: 10px !important
+}
+.itemPaign {
+  margin-bottom: 10px;
 }

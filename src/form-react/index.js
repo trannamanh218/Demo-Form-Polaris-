@@ -19,6 +19,8 @@ import CardRule from "../components/Card-rule";
 import { useCallback, useEffect, useState } from "react";
 
 const FormReact = () => {
+  const [checkToast, setCheckToast] = useState("");
+  const [checkValidate, setCheckValidate] = useState(false);
   const [idDelete, setIdDelete] = useState();
   const [checkDelete, setCheckDelete] = useState(false);
 
@@ -105,8 +107,32 @@ const FormReact = () => {
   }, [checkDelete]);
 
   const handleSubmit = () => {
-    const data = { ...intCamPaign, option: intOptionForm };
-    console.log("Data post", data);
+    setCheckValidate(true);
+
+    const isValid = intOptionForm.every((option) => {
+      return (
+        option.title &&
+        option.subtitle &&
+        option.quantity !== undefined &&
+        option.title.trim() !== "" &&
+        option.subtitle.trim() !== "" &&
+        option.quantity !== 0 &&
+        option.quantity !== ""
+      );
+    });
+
+    if (
+      intCamPaign.camPaign == "" ||
+      intCamPaign.titleCamPaign == "" ||
+      intCamPaign.descriptionCamPaign == "" ||
+      !isValid
+    ) {
+      const data = { ...intCamPaign, option: intOptionForm };
+      console.log("Data post", data);
+      setCheckToast("false");
+    } else {
+      setCheckToast("true");
+    }
     toggleActive();
   };
 
@@ -115,10 +141,13 @@ const FormReact = () => {
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const toastMarkup = active ? (
-    <Toast content="Success" onDismiss={toggleActive} />
+    <Toast
+      content={checkToast === "true" ? "Thành công" : "Thất bại"}
+      onDismiss={toggleActive}
+    />
   ) : null;
 
-  console.log("intOptionForm", intOptionForm);
+  console.log("intOptionForm", checkToast);
 
   return (
     <div className="container__form">
@@ -137,33 +166,54 @@ const FormReact = () => {
                     <Text id="title__option" variant="headingLg" as="h6">
                       General
                     </Text>
-
-                    <TextField
-                      value={intCamPaign.camPaign}
-                      title="CamPaign"
-                      placeholder="Enter .... "
-                    
-                      label="CamPaign"
-                      onChange={(e) => onchangeInput(e, "CamPaign")}
-                      autoComplete="off"
-                      required={true}
-                    />
-                    <TextField
-                      value={intCamPaign.titleCamPaign}
-                      placeholder="Enter .... "
-                     
-                      label="Title"
-                      onChange={(e) => onchangeInput(e, "Title")}
-                      autoComplete="email"
-                    />
-                    <TextField
-                      value={intCamPaign.descriptionCamPaign}
-                      placeholder="Enter .... "
-                      type="Description"
-                      label="Description"
-                      onChange={(e) => onchangeInput(e, "Description")}
-                      autoComplete="email"
-                    />
+                    <div className="itemPaign">
+                      <TextField
+                        id="textField"
+                        value={intCamPaign.camPaign}
+                        title="CamPaign"
+                        placeholder="Enter .... "
+                        label="CamPaign"
+                        onChange={(e) => onchangeInput(e, "CamPaign")}
+                        autoComplete="off"
+                        required={true}
+                        error={
+                          !intCamPaign.camPaign && checkValidate
+                            ? "Vui lòng nhập đủ"
+                            : ""
+                        }
+                      />
+                    </div>
+                    <div className="itemPaign">
+                      <TextField
+                        id="textField"
+                        value={intCamPaign.titleCamPaign}
+                        placeholder="Enter .... "
+                        label="Title"
+                        onChange={(e) => onchangeInput(e, "Title")}
+                        autoComplete="off"
+                        error={
+                          !intCamPaign.titleCamPaign && checkValidate
+                            ? "Vui lòng nhập đủ "
+                            : ""
+                        }
+                      />
+                    </div>
+                    <div className="itemPaign">
+                      <TextField
+                        id="textField"
+                        value={intCamPaign.descriptionCamPaign}
+                        placeholder="Enter .... "
+                        type="Description"
+                        label="Description"
+                        onChange={(e) => onchangeInput(e, "Description")}
+                        autoComplete="email"
+                        error={
+                          !intCamPaign.descriptionCamPaign && checkValidate
+                            ? "Vui lòng nhập đủ "
+                            : ""
+                        }
+                      />
+                    </div>
                   </Card>
 
                   <Card roundedAbove="sm" padding={0}>
@@ -175,6 +225,7 @@ const FormReact = () => {
 
                     {intOptionForm.map((item) => (
                       <CardRule
+                        checkValidate={checkValidate}
                         setIntOptionForm={setIntOptionForm}
                         indexItem={item.id}
                         itemOption={item}
