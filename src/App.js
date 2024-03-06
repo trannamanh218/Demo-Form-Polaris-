@@ -1,5 +1,5 @@
-import './App.scss';
-import FormReact from './form-react';
+import "./App.scss";
+import FormReact from "./form-react";
 
 function App() {
   return (
