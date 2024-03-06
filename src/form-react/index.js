@@ -81,9 +81,9 @@ const FormReact = () => {
         id: prevState.length + 1,
         title: "",
         label: "",
-        Description: "",
-        Quantity: 0, // Sử dụng giá trị mặc định hoặc giá trị mong muốn
-        Discount: "none",
+        description: "",
+        quantity: 0, // Sử dụng giá trị mặc định hoặc giá trị mong muốn
+        discount: "none",
         Amuont: "",
       },
     ]);
@@ -110,6 +110,9 @@ const FormReact = () => {
   const toastMarkup = active ? (
     <Toast content="Success" onDismiss={toggleActive} />
   ) : null;
+
+
+  console.log('intOptionForm', intOptionForm);
 
   return (
     <div className="container__form">
@@ -191,10 +194,17 @@ const FormReact = () => {
             </Form>
             <Box width="380px">
               <Card roundedAbove="sm">
-                <Text as="h4">Preview</Text>
-                <Text as="h4">Buy more anh save</Text>
-                <Text as="h7">apply for all products in store</Text>
+                <Text variant="headingMd" as="h6">
+                  Preview
+                </Text>
 
+                <Text id="title__card" variant="headingLg" as="h6">
+                  Buy more and save
+                </Text>
+
+                <Text id="title__sub__card" variant="headingMd" as="h6">
+                  Apply for all products in store
+                </Text>
                 <BoardIndex dataOption={intOptionForm} />
               </Card>
             </Box>

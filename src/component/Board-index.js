@@ -5,11 +5,17 @@ const BoardIndex = ({ dataOption }) => {
 
   useEffect(() => {
     const rows = dataOption.map((option) => {
+      const characters =
+        option.discount === "discount"
+          ? "%"
+          : option.discount === "each"
+          ? "$"
+          : "";
       return [
         option.title ? option.title : "none",
         option.discount ? option.discount : "none",
         option.quantity ? option.quantity : "none",
-        option.amuont ? option.amuont : "none",
+        option.amuont ? option.amuont + characters : "none",
       ];
     });
     setRowsOption(rows);
