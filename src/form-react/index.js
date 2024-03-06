@@ -120,8 +120,6 @@ const FormReact = () => {
 
   console.log("intOptionForm", intOptionForm);
 
-  
-
   return (
     <div className="container__form">
       <Frame>
@@ -187,6 +185,7 @@ const FormReact = () => {
                   ))}
                   <Box padding={300}>
                     <Button
+                    variant="primary" tone="critical"
                       width="100%"
                       onClick={handleClickAddOption}
                       icon={PlusIcon}
@@ -197,6 +196,7 @@ const FormReact = () => {
                     </Button>
                   </Box>
                 </Card>
+
                 {intOptionForm.length > 0 && <Button submit>Submit</Button>}
               </BlockStack>
             </Form>
