@@ -64,7 +64,7 @@ const CardRule = ({
           <TextField
             value={itemOption.title}
             placeholder="Enter .... "
-            type="text"
+         
             label="Title"
             onChange={(e) => hanleChangeInputOption(indexItem, e, "title")}
             autoComplete="email"
@@ -75,7 +75,7 @@ const CardRule = ({
           <TextField
             value={itemOption.subtitle}
             placeholder="Enter .... "
-            type="text"
+          
             label="Subtitle"
             onChange={(e) => hanleChangeInputOption(indexItem, e, "subtitle")}
             autoComplete="email"

@@ -131,25 +131,27 @@ const FormReact = () => {
           {" "}
           <InlineGrid columns={{ xs: 1, md: "2fr 1fr" }} gap="400">
             <Form onSubmit={handleSubmit}>
-              <BlockStack gap="100">
-                <Card roundedAbove="sm">
-                  <Text id="title__option" variant="headingLg" as="h6">
-                    General
-                  </Text>
-                  <FormLayout>
+              <FormLayout>
+                <BlockStack gap="100">
+                  <Card roundedAbove="sm">
+                    <Text id="title__option" variant="headingLg" as="h6">
+                      General
+                    </Text>
+
                     <TextField
                       value={intCamPaign.camPaign}
                       title="CamPaign"
                       placeholder="Enter .... "
-                      type="CamPaign"
+                    
                       label="CamPaign"
                       onChange={(e) => onchangeInput(e, "CamPaign")}
                       autoComplete="off"
+                      required={true}
                     />
                     <TextField
                       value={intCamPaign.titleCamPaign}
                       placeholder="Enter .... "
-                      type="Title"
+                     
                       label="Title"
                       onChange={(e) => onchangeInput(e, "Title")}
                       autoComplete="email"
@@ -162,43 +164,44 @@ const FormReact = () => {
                       onChange={(e) => onchangeInput(e, "Description")}
                       autoComplete="email"
                     />
-                  </FormLayout>
-                </Card>
+                  </Card>
 
-                <Card roundedAbove="sm" padding={0}>
-                  <Box padding="400">
-                    <Text variant="headingLg" as="h5" marginInlineEnd={200}>
-                      Volume discount rule
-                    </Text>
-                  </Box>
+                  <Card roundedAbove="sm" padding={0}>
+                    <Box padding="400">
+                      <Text variant="headingLg" as="h5" marginInlineEnd={200}>
+                        Volume discount rule
+                      </Text>
+                    </Box>
 
-                  {intOptionForm.map((item) => (
-                    <CardRule
-                      setIntOptionForm={setIntOptionForm}
-                      indexItem={item.id}
-                      itemOption={item}
-                      checkDelete={checkDelete}
-                      setCheckDelete={setCheckDelete}
-                      setIdDelete={setIdDelete}
-                      hanleChangeInputOption={hanleChangeInputOption}
-                    />
-                  ))}
-                  <Box padding={300}>
-                    <Button
-                    variant="primary" tone="critical"
-                      width="100%"
-                      onClick={handleClickAddOption}
-                      icon={PlusIcon}
-                      size="large"
-                      fullWidth={true}
-                    >
-                      Add option
-                    </Button>
-                  </Box>
-                </Card>
+                    {intOptionForm.map((item) => (
+                      <CardRule
+                        setIntOptionForm={setIntOptionForm}
+                        indexItem={item.id}
+                        itemOption={item}
+                        checkDelete={checkDelete}
+                        setCheckDelete={setCheckDelete}
+                        setIdDelete={setIdDelete}
+                        hanleChangeInputOption={hanleChangeInputOption}
+                      />
+                    ))}
+                    <Box padding={300}>
+                      <Button
+                        variant="primary"
+                        tone="critical"
+                        width="100%"
+                        onClick={handleClickAddOption}
+                        icon={PlusIcon}
+                        size="large"
+                        fullWidth={true}
+                      >
+                        Add option
+                      </Button>
+                    </Box>
+                  </Card>
 
-                {intOptionForm.length > 0 && <Button submit>Submit</Button>}
-              </BlockStack>
+                  {intOptionForm.length > 0 && <Button submit>Submit</Button>}
+                </BlockStack>
+              </FormLayout>
             </Form>
             <Box width="380px">
               <Card roundedAbove="sm">
