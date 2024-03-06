@@ -89,7 +89,7 @@ const FormReact = () => {
         title: "",
         label: "",
         description: "",
-        quantity: 0, // Sử dụng giá trị mặc định hoặc giá trị mong muốn
+        quantity: "", // Sử dụng giá trị mặc định hoặc giá trị mong muốn
         discount: "none",
         Amuont: "",
       },
@@ -119,6 +119,8 @@ const FormReact = () => {
   ) : null;
 
   console.log("intOptionForm", intOptionForm);
+
+  
 
   return (
     <div className="container__form">

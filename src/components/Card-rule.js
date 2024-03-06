@@ -92,7 +92,7 @@ const CardRule = ({
         </Grid.Cell>
         <Grid.Cell columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}>
           <TextField
-            value={Number(itemOption.quantity)}
+            value={ itemOption.quantity ? Number(itemOption.quantity): ''}
             placeholder="Enter .... "
             type="number"
             label="Quantity"
@@ -113,11 +113,10 @@ const CardRule = ({
         </Grid.Cell>
         {selected !== "none" && (
           <Grid.Cell
-            className="dddddddddddddddddddddddddd"
             columnSpan={{ xs: 4, sm: 4, md: 4, lg: 4, xl: 4 }}
           >
             <TextField
-              value={Number(itemOption.amuont)}
+              value={itemOption.amuont ? Number(itemOption.amuont) : ''}
               placeholder="Enter .... "
               type="number"
               label="Amuont"
