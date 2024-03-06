@@ -6,9 +6,9 @@ const BoardIndex = ({ dataOption }) => {
   useEffect(() => {
     const rows = dataOption.map((option) => {
       const characters =
-        option.discount === "discount"
+        option.discount == "discount"
           ? "%"
-          : option.discount === "each"
+          : option.discount == "each"
           ? "$"
           : "";
       return [

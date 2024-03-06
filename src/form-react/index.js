@@ -37,7 +37,7 @@ const FormReact = () => {
       label: "",
       quantity: 1,
       discount: "none",
-      amuont: "",
+      amuont: '',
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ const FormReact = () => {
       label: "Popular",
       quantity: 2,
       discount: "discount",
-      amuont: "10 ",
+      amuont: 10,
     },
   ]);
 
@@ -66,13 +66,22 @@ const FormReact = () => {
     }
   };
 
-  const hanleChangeInputOption = (id, value, title) => {
-    setIntOptionForm((prevOptions) =>
-      prevOptions.map((option) =>
-        option.id === id ? { ...option, [title]: value } : option
-      )
-    );
-  };
+  const hanleChangeInputOption = useCallback((id, value, title) => {
+   
+    if (title === "quantity" || title === "amuont") {
+      setIntOptionForm((prevOptions) =>
+        prevOptions.map((option) =>
+          option.id === id ? { ...option, [title]: Number(value) } : option
+        )
+      );
+    } else {
+      setIntOptionForm((prevOptions) =>
+        prevOptions.map((option) =>
+          option.id === id ? { ...option, [title]: value } : option
+        )
+      );
+    }
+  }, []);
 
   const handleClickAddOption = () => {
     setIntOptionForm((prevState) => [
@@ -84,7 +93,7 @@ const FormReact = () => {
         description: "",
         quantity: 0, // Sử dụng giá trị mặc định hoặc giá trị mong muốn
         discount: "none",
-        Amuont: "",
+        Amuont: '',
       },
     ]);
   };
@@ -111,8 +120,7 @@ const FormReact = () => {
     <Toast content="Success" onDismiss={toggleActive} />
   ) : null;
 
-
-  console.log('intOptionForm', intOptionForm);
+  console.log("intOptionForm", intOptionForm);
 
   return (
     <div className="container__form">
